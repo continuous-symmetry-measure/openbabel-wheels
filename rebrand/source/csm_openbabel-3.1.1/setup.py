@@ -20,7 +20,7 @@ base_dir = os.path.abspath(os.path.dirname(__file__))
 def find_version():
     """Extract the current version of these python bindings from the __init__.py file."""
     try:
-        with open(os.path.join(base_dir, 'openbabel', '__init__.py')) as fp:
+        with open(os.path.join(base_dir, 'csm_openbabel', '__init__.py')) as fp:
             for line in fp:
                 version_match = re.match(r'^__version__ = "(.+?)"$', line)
                 if version_match:
@@ -79,7 +79,7 @@ class CustomSdist(sdist):
     def make_release_tree(self, base_dir, files):
         sdist.make_release_tree(self, base_dir, files)
         link = 'hard' if hasattr(os, 'link') else None
-        pkg_dir = os.path.join(base_dir, 'openbabel')
+        pkg_dir = os.path.join(base_dir, 'csm_openbabel')
         self.copy_file(os.path.join('..', 'stereo.i'), pkg_dir, link=link)
         self.copy_file(os.path.join('..', 'openbabel-python.i'), pkg_dir, link=link)
 
@@ -111,7 +111,7 @@ class CustomBuildExt(build_ext):
 
 
 obextension = Extension(
-    'openbabel._openbabel', [os.path.join('openbabel', 'openbabel-python.i')], libraries=['openbabel']
+    'csm_openbabel._openbabel', [os.path.join('csm_openbabel', 'openbabel-python.i')], libraries=['openbabel']
 )
 
 
@@ -126,7 +126,7 @@ setup(
     long_description=open(os.path.join(base_dir, 'README.rst')).read(),
     zip_safe=False,
     cmdclass={'build': CustomBuild, 'build_ext': CustomBuildExt, 'install': CustomInstall, 'sdist': CustomSdist},
-    packages=['openbabel'],
+    packages=['csm_openbabel'],
     ext_modules=[obextension],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
