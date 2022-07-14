@@ -15,7 +15,7 @@ except Exception:
 
 from . import openbabel
 
-__version__ = "3.1.1"
+__version__ = "3.1.1.1"
 
 _thismodule = sys.modules[__name__]
 
