@@ -14,11 +14,11 @@ We repackaged the source distribution as well as the Windows wheels. First we do
 We then converted them one by one.
 
 ### Source package
-To convert the source package, we opened the openbabel-3.1.1.1.tar.gz file into the rebrand/source directory. We renamed it csm_openbabel-3.1.1, updated __init__.py which contains the version to 3.1.1. We also updated setup.py's package name to csm_openbabel, and also the PKG_INFO file.
+To convert the source package, we opened the openbabel-3.1.1.1.tar.gz file into the rebrand/source directory. We renamed it csm_openbabel-3.1.1, updated __init__.py which contains the version to 3.1. We also updated setup.py's package name to csm_openbabel, and also the PKG_INFO file.
 
-We changed the version number because OpenBabel 3.1.1 has Windows wheels (for Python 3.7) and no source distribution. OpenBabel 3.1.1.1 is a source-only distribution. We wanted to combine both to a single package.
+We changed the version number because OpenBabel 3.1.1 has Windows wheels (for Python 3.7) and no source distribution. OpenBabel 3.1 is a source-only distribution. We wanted to combine both to a single package.
 
-We tar -czvf csm_openbabel-3.1.1.tar.gz csm_openbabel-3.1.1/ (from WSL) and uploaded to pypi
+We tar -czvf csm_openbabel-3.1.tar.gz csm_openbabel-3.1/ (from WSL) and uploaded to pypi
 
 ### Windows Wheels
 The Windows wheels are all based on the Windows 3.7 wheel created by the OpenBabel team, and not the Christophe Gholke's wheels. His wheels contain their own non-working version of openbabel, which we had to remove.
